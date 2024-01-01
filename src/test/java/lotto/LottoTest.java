@@ -43,4 +43,18 @@ public class LottoTest {
         assertThatThrownBy(()-> new Lotto(list))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("숫자가 6개 이상 들어온다면 [ERROR]로 시작하는 에러 메시지를 출력한다.")
+    public void printErrorMessageCauseInputSizeOver(){
+        List list = List.of(1,2,3,4,5,6,7);
+        String msg = "[ERROR]";
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(()-> new Lotto(list))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(msg).isEqualTo(out.toString().substring(0,7));
+    }
+
 }
