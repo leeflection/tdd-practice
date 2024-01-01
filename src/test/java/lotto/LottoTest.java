@@ -34,4 +34,13 @@ public class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(msg).isEqualTo(out.toString().substring(0,7));
     }
+
+    @Test
+    @DisplayName("input 숫자가 6개 보다 많다면 IllegalArgumentException이 발생한다.")
+    public void  validateInputDataSize(){
+        List list = List.of(1,2,3,4,5,6,7);
+
+        assertThatThrownBy(()-> new Lotto(list))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
