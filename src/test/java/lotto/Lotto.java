@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    static final Output output = new Output();
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,6 +16,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         if(isDuplicated(numbers)){
+            output.printDuplicationError();
             throw new IllegalArgumentException();
         }
     }
